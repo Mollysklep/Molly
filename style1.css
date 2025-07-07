@@ -1,0 +1,65 @@
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fffafc;
+  color: #333;
+}
+header {
+  background-color: #ffcef2;
+  padding: 20px;
+  text-align: center;
+}
+header h1 {
+  margin: 0;
+}
+.products {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+.product {
+  background: white;
+  margin: 10px;
+  padding: 15px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 20px auto;
+}
+form input, form textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1em;
+}
+form button {
+  background-color: #ff6fbc;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+form button:hover {
+  background-color: #ff459f;
+}
+section {
+  padding: 20px;
+}
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #f9d8ea;
+  margin-top: 40px;
+}

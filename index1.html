@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Molly - Sklep</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Sklep Molly</h1>
+    <p>Twój styl. Twoje zasady.</p>
+  </header>
+
+  
+<section class="products">
+  <h2>Nasze produkty</h2>
+  <div class="product">
+    <img src="https://via.placeholder.com/250x200.png?text=Produkt+1" alt="Produkt 1">
+    <h3>NAZWA PRODUKTU</h3>
+    <p>Opis produktu, rozmiary, kolory.</p>
+    <strong>99 zł</strong>
+  </div>
+</section>
+
+  
+<section class="order">
+  <h2>Zamów produkt</h2>
+  <form action="https://formspree.io/f/xeqyrwle" method="POST">
+    <label>Imię i nazwisko:</label>
+    <input type="text" name="name" required>
+
+    <label>Adres e-mail:</label>
+    <input type="email" name="email" required>
+
+    <label>Produkt (nazwa/ilość):</label>
+    <textarea name="product" required></textarea>
+
+    <label>Uwagi (opcjonalnie):</label>
+    <textarea name="message"></textarea>
+
+    <button type="submit">Wyślij zamówienie</button>
+  </form>
+</section>
+
+  
+<section class="contact">
+  <h2>Skontaktuj się z nami</h2>
+  <form action="https://formspree.io/f/xeqyrwle" method="POST">
+    <label>Twoje imię:</label>
+    <input type="text" name="name" required>
+
+    <label>Twój e-mail:</label>
+    <input type="email" name="email" required>
+
+    <label>Wiadomość:</label>
+    <textarea name="message" required></textarea>
+
+    <button type="submit">Wyślij</button>
+  </form>
+</section>
+
+
+  <footer>
+    <p>&copy; 2025 Molly – Wszystkie prawa zastrzeżone.</p>
+  </footer>
+</body>
+</html>
