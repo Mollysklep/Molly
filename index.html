@@ -1,120 +1,159 @@
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sklep Molly – Świece sojowe</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    body {
-      background-color: #f9f9f9;
-      font-family: Arial, sans-serif;
-    }
-    .product-card {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 10px;
-      overflow: hidden;
-      background: white;
-      transition: transform 0.2s;
-    }
-    .product-card:hover {
-      transform: scale(1.02);
-    }
-    .product-img {
-      height: 250px;
-      object-fit: cover;
-      width: 100%;
-    }
-    .product-info {
-      padding: 15px;
-    }
+    body { background-color: #fdfdfd; }
+    .product-img { height: 250px; object-fit: cover; width: 100%; border-top-left-radius: 10px; border-top-right-radius: 10px; }
+    .product-card { box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-radius: 10px; transition: 0.3s; background: white; }
+    .product-card:hover { transform: scale(1.02); }
+    .product-info { padding: 15px; }
+    #cartModal .modal-body { max-height: 400px; overflow-y: auto; }
   </style>
 </head>
 <body>
+
   <div class="container py-5">
-    <h1 class="text-center mb-5">Molly – Boxy kwiatowe i świece z wosku sojowego</h1>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-      <!-- Produkt 1 -->
-      <div class="col">
-        <div class="product-card">
-          <img src="https://i.postimg.cc/QV4Scv22/IMG-4280.jpg" alt="Box Kwiatowy 1" class="product-img">
-          <div class="product-info">
-            <h5>Box kwiatowy 01</h5>
-            <p>Naturalna świeca w dekoracyjnym pudełku z suszonymi kwiatami.</p>
-            <p><strong>Cena:</strong> 89,00 zł</p>
-            <button class="btn btn-primary w-100">Dodaj do koszyka</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produkt 2 -->
-      <div class="col">
-        <div class="product-card">
-          <img src="https://i.postimg.cc/VrsBCFDs/IMG-4281.jpg" alt="Box Kwiatowy 2" class="product-img">
-          <div class="product-info">
-            <h5>Box kwiatowy 02</h5>
-            <p>Sojowa świeca z dodatkiem zapachu i kompozycją florystyczną.</p>
-            <p><strong>Cena:</strong> 95,00 zł</p>
-            <button class="btn btn-primary w-100">Dodaj do koszyka</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produkt 3 -->
-      <div class="col">
-        <div class="product-card">
-          <img src="https://i.postimg.cc/WFQzvNFR/IMG-4282.jpg" alt="Box Kwiatowy 3" class="product-img">
-          <div class="product-info">
-            <h5>Box kwiatowy 03</h5>
-            <p>Limitowana edycja ręcznie robionych świec dekoracyjnych.</p>
-            <p><strong>Cena:</strong> 99,00 zł</p>
-            <button class="btn btn-primary w-100">Dodaj do koszyka</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produkt 4 -->
-      <div class="col">
-        <div class="product-card">
-          <img src="https://i.postimg.cc/KRtNC4k2/IMG-4285.jpg" alt="Świeca dekoracyjna 1" class="product-img">
-          <div class="product-info">
-            <h5>Świeca dekoracyjna 01</h5>
-            <p>Rzeźbiona świeca z naturalnego wosku, idealna na prezent.</p>
-            <p><strong>Cena:</strong> 45,00 zł</p>
-            <button class="btn btn-primary w-100">Dodaj do koszyka</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produkt 5 -->
-      <div class="col">
-        <div class="product-card">
-          <img src="https://i.postimg.cc/R631d052/IMG-4286.jpg" alt="Świeca dekoracyjna 2" class="product-img">
-          <div class="product-info">
-            <h5>Świeca dekoracyjna 02</h5>
-            <p>Sojowa świeca z delikatnym zapachem wanilii i lawendy.</p>
-            <p><strong>Cena:</strong> 39,00 zł</p>
-            <button class="btn btn-primary w-100">Dodaj do koszyka</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produkt 6 -->
-      <div class="col">
-        <div class="product-card">
-          <img src="https://i.postimg.cc/w7Y55HWb/IMG-4288.jpg" alt="Zestaw świec" class="product-img">
-          <div class="product-info">
-            <h5>Zestaw 3 świec</h5>
-            <p>Trio świec dekoracyjnych z naturalnego wosku sojowego.</p>
-            <p><strong>Cena:</strong> 119,00 zł</p>
-            <button class="btn btn-primary w-100">Dodaj do koszyka</button>
-          </div>
-        </div>
-      </div>
-
+    <h1 class="text-center mb-4">Molly – Boxy kwiatowe i świece z wosku sojowego</h1>
+    <div class="text-end mb-3">
+      <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#cartModal">
+        Koszyk (<span id="cart-count">0</span>)
+      </button>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4" id="product-list">
+      <!-- Produkty zostaną wczytane przez JS -->
     </div>
   </div>
+
+  <!-- MODAL: Koszyk -->
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="cartModalLabel">Twój koszyk</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+        </div>
+        <div class="modal-body">
+          <ul id="cart-items" class="list-group"></ul>
+          <div class="mt-3">
+            <strong>Suma: <span id="cart-total">0,00</span> zł</strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a id="order-link" class="btn btn-success" href="#">Zamów przez e-mail</a>
+          <button class="btn btn-secondary" data-bs-dismiss="modal">Zamknij</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const products = [
+      {
+        name: "Box kwiatowy 01",
+        price: 89,
+        img: "https://i.postimg.cc/QV4Scv22/IMG-4280.jpg"
+      },
+      {
+        name: "Box kwiatowy 02",
+        price: 95,
+        img: "https://i.postimg.cc/VrsBCFDs/IMG-4281.jpg"
+      },
+      {
+        name: "Box kwiatowy 03",
+        price: 99,
+        img: "https://i.postimg.cc/WFQzvNFR/IMG-4282.jpg"
+      },
+      {
+        name: "Świeca dekoracyjna 01",
+        price: 45,
+        img: "https://i.postimg.cc/KRtNC4k2/IMG-4285.jpg"
+      },
+      {
+        name: "Świeca dekoracyjna 02",
+        price: 39,
+        img: "https://i.postimg.cc/R631d052/IMG-4286.jpg"
+      },
+      {
+        name: "Zestaw 3 świec",
+        price: 119,
+        img: "https://i.postimg.cc/w7Y55HWb/IMG-4288.jpg"
+      }
+    ];
+
+    let cart = [];
+
+    const updateCartDisplay = () => {
+      const cartItems = document.getElementById("cart-items");
+      const cartCount = document.getElementById("cart-count");
+      const cartTotal = document.getElementById("cart-total");
+      const orderLink = document.getElementById("order-link");
+
+      cartItems.innerHTML = "";
+      let total = 0;
+      cart.forEach((item, i) => {
+        const li = document.createElement("li");
+        li.className = "list-group-item d-flex justify-content-between align-items-center";
+        li.innerHTML = `
+          ${item.name} - ${item.price} zł x ${item.qty}
+          <button class="btn btn-sm btn-danger" onclick="removeFromCart(${i})">Usuń</button>
+        `;
+        cartItems.appendChild(li);
+        total += item.price * item.qty;
+      });
+
+      cartCount.innerText = cart.reduce((sum, i) => sum + i.qty, 0);
+      cartTotal.innerText = total.toFixed(2);
+
+      // przygotuj treść maila
+      const email = "TWÓJ_EMAIL@przyklad.com"; // <-- PODMIEŃ NA SWÓJ
+      const subject = encodeURIComponent("Zamówienie ze sklepu Molly");
+      let body = "Zamówione produkty:\n\n";
+      cart.forEach(item => {
+        body += `- ${item.name} x ${item.qty} = ${item.price * item.qty} zł\n`;
+      });
+      body += `\nSuma: ${total.toFixed(2)} zł\n\nProszę o kontakt w sprawie realizacji.`;
+
+      orderLink.href = `mailto:${email}?subject=${subject}&body=${encodeURIComponent(body)}`;
+    };
+
+    const addToCart = (index) => {
+      const existing = cart.find(i => i.name === products[index].name);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ ...products[index], qty: 1 });
+      }
+      updateCartDisplay();
+    };
+
+    const removeFromCart = (index) => {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    };
+
+    // Wstaw produkty do HTML
+    const productList = document.getElementById("product-list");
+    products.forEach((p, i) => {
+      const col = document.createElement("div");
+      col.className = "col";
+      col.innerHTML = `
+        <div class="product-card">
+          <img src="${p.img}" class="product-img" alt="${p.name}">
+          <div class="product-info">
+            <h5>${p.name}</h5>
+            <p>Cena: ${p.price} zł</p>
+            <button class="btn btn-primary w-100" onclick="addToCart(${i})">Dodaj do koszyka</button>
+          </div>
+        </div>
+      `;
+      productList.appendChild(col);
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
